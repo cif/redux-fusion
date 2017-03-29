@@ -11,7 +11,11 @@ redux-fusion exports a single function which fuses downstream state$ and upstrea
 another function with `($state, dispatch)`. It looks like this:
 
 ```
-const Hello$ = (state$, dispatch) => ($props) => {
+import React from 'react'
+import { createEventHandler } from 'recompose'
+import fuse from 'redux-fusion'
+
+const Hello$ = (state$, dispatch) => (props$) => {
   // handler props for the component (see recompose observable utils)
   const { handler: handleClick, stream: click$ } = createEventHandler()
 
@@ -25,7 +29,7 @@ const Hello$ = (state$, dispatch) => ($props) => {
     .pluck('hello')
     .map(val => `Hello ${val}`)
 
-  return $props.combineLatest(hello$, (props, hello) => ({
+  return props$.combineLatest(hello$, (props, hello) => ({
     hello,
     handleClick
   }))   
@@ -45,3 +49,5 @@ const Hello = ({ handleClick, message }) =>
 const HelloWorld = fuse(Hello$, Hello);
 
 ```
+
+## Stay tuned for more real life examples!
