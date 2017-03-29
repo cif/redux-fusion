@@ -1,14 +1,19 @@
 # redux-fusion
 [![Build Status](https://travis-ci.org/cif/redux-fusion.svg?branch=master)](https://travis-ci.org/cif/redux-fusion)
 
-This function can serve as a replacement for `react-redux`  [connect](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options)
-function using [recompose](https://github.com/acdlite/recompose) [Observable utilities](https://github.com/acdlite/recompose/blob/master/docs/API.md#observable-utilities), namely `mapPropsStream()`.
+### What is this?
+This module is a higher order component that serves as a replacement for `react-redux` [connect](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options).
+There is no additional buy in, all of your redux modules remain as-is. You could even wrap an existing connected component with `fuse()` if desired.
 
+### How it works
 Redux `createStore` is [observable](https://github.com/reactjs/redux/blob/master/src/createStore.js#L203-L208) so it is straight forward to
 access store from root `<Provider>` context, convert state to a `state$` observable and subscribe a wrapped component's props via `mapPropsStream()`.
+See [recompose's Observable utilities](https://github.com/acdlite/recompose/blob/master/docs/API.md#observable-utilities) for more details.
 
-redux-fusion exports a single function which fuses downstream state$ and upstream UI actions also via `mapPropsStream()`. So generally speaking `mapPropsStream()` is awesome, we've just wrapped that function in
-another function with `($state, dispatch)`. It looks like this:
+Effectively, this just wraps ``mapPropsStream()` in another function with signature
+`($state, dispatch)` giving a "fuser" bi-directional reactive programing capabilities.
+
+It looks like this:
 
 ```
 import React from 'react'
