@@ -46,7 +46,7 @@ const Hello = ({ handleClick, message }) =>
     )
 
 // the final 'fused' or 'connected' container component
-const HelloWorld = fuse(Hello$, Hello);
+const HelloWorld = fuse(Hello$, Hello)
 
 ```
 
