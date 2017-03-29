@@ -5,20 +5,27 @@
   "main": "index.js",
   "scripts": {
     "build": "babel ./src -d ./ --ignore **/*.test.js",
-    "test": "mocha ./src/*.test.js --compilers js:babel-core/register --reporter dot"
+    "mocha": "mocha ./src/*.test.js --compilers js:babel-core/register --reporter dot",
+    "lint" : "node_modules/eslint/bin/eslint.js src",
+    "test": "npm run mocha && npm run lint"
   },
   "author": "email@benipsen.com",
   "repository": "https://github.com/cif/redux-fusion.git",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.24.0",
+    "babel-eslint": "^7.2.1",
     "babel-plugin-transform-react-jsx": "^6.23.0",
     "babel-preset-es2015": "^6.24.0",
     "enzyme": "^2.8.0",
+    "eslint": "^3.18.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-react": "^6.10.3",
     "jsdom": "^9.12.0",
     "mocha": "^3.2.0",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
+    "redux": "^3.6.0",
     "sinon": "^2.1.0"
   },
   "dependencies": {

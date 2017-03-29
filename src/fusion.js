@@ -1,4 +1,4 @@
-import { Component, createElement, PropTypes } from 'react'
+import { Component, createElement } from 'react'
 import { mapPropsStream } from 'recompose'
 import { Observable } from 'rxjs'
 
@@ -11,18 +11,22 @@ export default (propStream$, StreamedComponent) => {
            Did you forget to <Provide> it?`
         )
       }
-      const store$ = Observable.from(this.context.store)
-      return createElement(mapPropsStream(propStream$(store$))(StreamedComponent))
+      const { store } = this.context;
+      return createElement(
+        mapPropsStream(
+          propStream$(Observable.from(store), store.dispatch)
+        )(StreamedComponent)
+      )
     }
   }
   ComponentFromStream.contextTypes = {
-    store: (props, propName, componentName) => {
+    store: (props, propName) => {
       // custom validation via Observable.from
       try {
         Observable.from(props[propName])
       } catch (e) {
         return
-          `fuse() error: context.store must implement observable`
+          `fuse() error: context.store must implement observable` // eslint-disable-line
       }
       return null
     }

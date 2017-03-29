@@ -1,6 +1,7 @@
 import React from 'react'
 import assert from 'assert'
 import jsdom from 'jsdom'
+import { createStore } from 'redux'
 import { mount } from 'enzyme'
 import { Observable } from 'rxjs'
 import fuse from './fusion'
@@ -11,19 +12,21 @@ global.window = doc.defaultView
 
 const mocks = () => {
   const mockStream = () => () => Observable.of('foo')
+  const mockStore = createStore(() => {});
   return {
-    mockStream
+    mockStream,
+    mockStore
   }
 }
 
 describe('fusion', () => {
   it('should render the wrapped component', () => {
-    const { mockStream } = mocks()
+    const { mockStream, mockStore } = mocks()
     const WrappedComponent = () => <div />
     const FusedComponent = fuse(mockStream, WrappedComponent)
     const enz = mount(
       <FusedComponent />,
-      { context: { store: [] } }
+      { context: { store: mockStore } }
     )
     assert.equal(enz.find('div').length, 1, 'wrapper div rendered')
   })
