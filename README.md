@@ -2,17 +2,20 @@
 [![Build Status](https://travis-ci.org/cif/redux-fusion.svg?branch=master)](https://travis-ci.org/cif/redux-fusion)
 
 ### What is this?
-This module is a higher order component that serves as a replacement for `react-redux` [connect](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options).
-There is no additional buy in, all of your redux modules remain as-is. You could even wrap an existing connected component with `fuse()` if desired.
+This module is a higher order component that serves as an alternative to `react-redux` [connect](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options).
+There is no additional buy in, all of your redux modules and containers can remain as-is.
+You could even wrap an existing connected component with `fuse()` if desired.
 
 ### How it works
-Redux `createStore` is [observable](https://github.com/reactjs/redux/blob/master/src/createStore.js#L203-L208) so it is straight forward to
-access store from root `<Provider>` context, convert state to a `state$` observable and subscribe a wrapped component's props via `mapPropsStream()`.
-See [recompose's Observable utilities](https://github.com/acdlite/recompose/blob/master/docs/API.md#observable-utilities) for more details.
+Redux `createStore` is [observable](https://github.com/reactjs/redux/blob/master/src/createStore.js#L203-L208)
+so it is straight forward to access store from root `<Provider>` context, convert state to a `state$`
+observable and subscribe a wrapped component's props via `mapPropsStream()`.
+See [recompose's Observable utilities](https://github.com/acdlite/recompose/blob/master/docs/API.md#observable-utilities)
+for more details.
 
-Effectively, redux-fusion simply wraps `mapPropsStream()` in a function with the signature
+**Tl;Dr** redux-fusion wraps `mapPropsStream()` in a function with
 `($state, dispatch)`. This grants the "fuser" function bi-directional reactive programing
-capabilities and access to redux's dispatch.
+capabilities along with access to redux's dispatch.
 
 It looks like this:
 
