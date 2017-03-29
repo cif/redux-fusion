@@ -34,13 +34,14 @@ const Hello$ = (state$, dispatch) => (props$) => {
     .pluck('hello')
     .map(val => `Hello ${val}`)
 
+  // return stream of props  
   return props$.combineLatest(hello$, (props, hello) => ({
     hello,
     handleClick
   }))   
 }
 
-// consume
+// consumer component 'view'
 const Hello = ({ handleClick, message }) =>
   (
     <div>
