@@ -16,7 +16,7 @@ capabilities and access to redux's dispatch.
 
 It looks like this:
 
-```
+```js
 import React from 'react'
 import { createEventHandler } from 'recompose'
 import fuse from 'redux-fusion'
