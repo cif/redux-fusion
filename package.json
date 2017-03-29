@@ -8,8 +8,10 @@
     "test": "mocha ./src/*.test.js --compilers js:babel-core/register --reporter dot"
   },
   "author": "email@benipsen.com",
+  "repository": "https://github.com/cif/redux-fusion.git",
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "^6.24.0",
     "babel-plugin-transform-react-jsx": "^6.23.0",
     "babel-preset-es2015": "^6.24.0",
     "enzyme": "^2.8.0",
