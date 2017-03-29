@@ -8,8 +8,8 @@ You could even wrap an existing connected component with `fuse()` if desired.
 
 ### How it works
 Redux `createStore` is [observable](https://github.com/reactjs/redux/blob/master/src/createStore.js#L203-L208)
-so it is straight forward to access store from root `<Provider>` context, convert state to a `state$`
-observable and subscribe a wrapped component's props via `mapPropsStream()`.
+so it is straight forward to access store from root `<Provider>` context, convert to a `state$`
+observable and subscribe the wrapped component's props via `mapPropsStream()`.
 See [recompose's Observable utilities](https://github.com/acdlite/recompose/blob/master/docs/API.md#observable-utilities)
 for more details.
 
