@@ -13,11 +13,7 @@ observable and subscribe the wrapped component's props via `mapPropsStream()`.
 See [recompose's Observable utilities](https://github.com/acdlite/recompose/blob/master/docs/API.md#observable-utilities)
 for more details.
 
-**Tl;Dr** redux-fusion wraps `mapPropsStream()` in a function with
-`($state, dispatch)`. This grants the "fuser" function bi-directional reactive programing
-capabilities along with access to redux's dispatch.
-
-It looks like this:
+### Usage Example
 
 ```js
 import React from 'react'
@@ -42,7 +38,6 @@ const Hello$ = (state$, dispatch) => (props$) => {
     hello,
     handleClick
   }))   
-
 }
 
 // consume
@@ -52,7 +47,7 @@ const Hello = ({ handleClick, message }) =>
       <h3>{message}</h3>
       <button onClick={handleClick}>Click Me</button>
     </div>
-    )
+  )
 
 // the final 'fused' or 'connected' container component
 const HelloWorld = fuse(Hello$, Hello)
