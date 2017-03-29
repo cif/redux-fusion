@@ -10,8 +10,9 @@ Redux `createStore` is [observable](https://github.com/reactjs/redux/blob/master
 access store from root `<Provider>` context, convert state to a `state$` observable and subscribe a wrapped component's props via `mapPropsStream()`.
 See [recompose's Observable utilities](https://github.com/acdlite/recompose/blob/master/docs/API.md#observable-utilities) for more details.
 
-Effectively, this just wraps ``mapPropsStream()` in another function with signature
-`($state, dispatch)` giving a "fuser" bi-directional reactive programing capabilities.
+Effectively, redux-fusion simply wraps `mapPropsStream()` in a function with the signature
+`($state, dispatch)`. This grants the "fuser" function bi-directional reactive programing
+capabilities and access to redux's dispatch.
 
 It looks like this:
 
