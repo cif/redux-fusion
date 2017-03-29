@@ -1,0 +1,27 @@
+{
+  "name": "redux-fusion",
+  "version": "1.0.0",
+  "description": "RxJS Redux Bindings",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel ./src -d ./ --ignore **/*.test.js",
+    "test": "mocha ./src/*.test.js --compilers js:babel-core/register --reporter dot"
+  },
+  "author": "email@benipsen.com",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-plugin-transform-react-jsx": "^6.23.0",
+    "babel-preset-es2015": "^6.24.0",
+    "enzyme": "^2.8.0",
+    "jsdom": "^9.12.0",
+    "mocha": "^3.2.0",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "sinon": "^2.1.0"
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "recompose": "^0.22.0",
+    "rxjs": "^5.2.0"
+  }
+}
