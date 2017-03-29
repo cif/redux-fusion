@@ -24,7 +24,7 @@ const Hello$ = (state$, dispatch) => (props$) => {
     .debounceTime(300)
     .subscribe(() => dispatch(someReduxAction()))
 
-  // subscribe to some state stream properties, a 'selector' or sorts
+  // subscribe to some state stream properties, a 'selector' of sorts
   const $hello = state$
     .pluck('hello')
     .map(val => `Hello ${val}`)
