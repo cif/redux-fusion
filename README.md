@@ -20,6 +20,8 @@ import React from 'react'
 import { createEventHandler } from 'recompose'
 import fuse from 'redux-fusion'
 
+// the 'fuser' function returns a stream of props and ui actions simultaneously
+// imagine mapStateToProps and mapDispatchToProps in one composeable stream
 const Hello$ = (state$, dispatch) => (props$) => {
   // handler props for the component (see recompose observable utils)
   const { handler: handleClick, stream: click$ } = createEventHandler()
