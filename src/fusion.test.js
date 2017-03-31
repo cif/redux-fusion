@@ -23,7 +23,7 @@ describe('fusion', () => {
   it('should render the wrapped component', () => {
     const { mockStream, mockStore } = mocks()
     const WrappedComponent = () => <div />
-    const FusedComponent = fuse(mockStream, WrappedComponent)
+    const FusedComponent = fuse(mockStream)(WrappedComponent)
     const enz = mount(
       <FusedComponent />,
       { context: { store: mockStore } }
@@ -34,7 +34,7 @@ describe('fusion', () => {
   it('should throw an error when store is not in context', () => {
     const { mockStream } = mocks()
     const WrappedComponent = () => <div />
-    const FusedComponent = fuse(mockStream, WrappedComponent)
+    const FusedComponent = fuse(mockStream)(WrappedComponent)
     assert.throws(
       () => mount(<FusedComponent />, { context: undefined }),
       /Missing/,
@@ -45,7 +45,7 @@ describe('fusion', () => {
   it('should throw an error when store is not observable', () => {
     const { mockStream } = mocks()
     const WrappedComponent = () => <div />
-    const FusedComponent = fuse(mockStream, WrappedComponent)
+    const FusedComponent = fuse(mockStream)(WrappedComponent)
     assert.throws(
       () => mount(<FusedComponent />, { context: { store: {} } }),
       /observable/,
