@@ -23,7 +23,7 @@ import { createEventHandler } from 'recompose'
 import fuse from 'redux-fusion'
 import { someReduxAction } from '../redux/actions'
 
-const hello$ = (state$, dispatch, getState) => (props$) => {
+const hello$ = (state$, dispatch) => (props$) => {
   const {
      handler: handleClick,
      stream: click$
