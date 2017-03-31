@@ -13,6 +13,8 @@ observable and subscribe the wrapped component's props via `mapPropsStream()`.
 See [recompose's Observable utilities](https://github.com/acdlite/recompose/blob/master/docs/API.md#observable-utilities)
 for more details.
 
+The end result is developer ability to use bi-directional reactive programming to combine state and UI streams:
+
 ### Usage Example
 
 ```js
@@ -21,7 +23,7 @@ import { createEventHandler } from 'recompose'
 import fuse from 'redux-fusion'
 
 // a 'fuser' function
-const Hello$ = (state$, dispatch) => (props$) => {
+const Hello$ = (state$, dispatch, getState) => (props$) => {
   // handler props for the component (see recompose observable utils)
   const { handler: handleClick, stream: click$ } = createEventHandler()
 

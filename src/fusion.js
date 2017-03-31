@@ -14,7 +14,7 @@ export default (propStream$, StreamedComponent) => {
       const { store } = this.context;
       return createElement(
         mapPropsStream(
-          propStream$(Observable.from(store), store.dispatch)
+          propStream$(Observable.from(store), store.dispatch, store.getState)
         )(StreamedComponent)
       )
     }

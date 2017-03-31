@@ -1,13 +1,14 @@
 {
   "name": "redux-fusion",
-  "version": "1.0.3",
+  "version": "0.1.0",
   "description": "RxJS Redux Bindings",
   "main": "index.js",
   "scripts": {
     "build": "babel ./src -d ./ --ignore **/*.test.js",
     "mocha": "mocha ./src/*.test.js --compilers js:babel-core/register --reporter dot",
     "lint" : "node_modules/eslint/bin/eslint.js src",
-    "test": "npm run mocha && npm run lint"
+    "test": "npm run mocha && npm run lint",
+    "prepublish": "npm build"
   },
   "author": "email@benipsen.com",
   "repository": "https://github.com/cif/redux-fusion.git",
