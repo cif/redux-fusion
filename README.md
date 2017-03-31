@@ -23,7 +23,7 @@ import { createEventHandler } from 'recompose'
 import fuse from 'redux-fusion'
 
 // a 'fuser' function
-const Hello$ = (state$, dispatch, getState) => (props$) => {
+const Hello$ = (state$, dispatch) => (props$) => {
   // handler props for the component (see recompose observable utils)
   const { handler: handleClick, stream: click$ } = createEventHandler()
 
