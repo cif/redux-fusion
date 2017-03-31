@@ -2,7 +2,7 @@
   "name": "redux-fusion",
   "version": "0.1.0",
   "description": "RxJS Redux Bindings",
-  "main": "index.js",
+  "main": "fusion.js",
   "scripts": {
     "build": "babel ./src -d ./ --ignore **/*.test.js",
     "mocha": "mocha ./src/*.test.js --compilers js:babel-core/register --reporter dot",
