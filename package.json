@@ -1,12 +1,12 @@
 {
   "name": "redux-fusion",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "RxJS Redux Bindings",
   "main": "fusion.js",
   "scripts": {
     "build": "babel ./src -d ./ --ignore **/*.test.js",
     "mocha": "mocha ./src/*.test.js --compilers js:babel-core/register --reporter dot",
-    "lint" : "node_modules/eslint/bin/eslint.js src",
+    "lint": "node_modules/eslint/bin/eslint.js src",
     "test": "npm run mocha && npm run lint",
     "prepublish": "npm build"
   },
