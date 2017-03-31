@@ -21,30 +21,28 @@ The end result is developer ability to use bi-directional reactive programming t
 import React from 'react'
 import { createEventHandler } from 'recompose'
 import fuse from 'redux-fusion'
+import { someReduxAction } from '../redux/actions'
 
-// a 'fuser' function
-const Hello$ = (state$, dispatch) => (props$) => {
-  // handler props for the component (see recompose observable utils)
-  const { handler: handleClick, stream: click$ } = createEventHandler()
+const hello$ = (state$, dispatch, getState) => (props$) => {
+  const {
+     handler: handleClick,
+     stream: click$
+  } = createEventHandler()
 
-  // subscribe to click stream, debounce before dispatch to redux
   click$
     .debounceTime(300)
     .subscribe(() => dispatch(someReduxAction()))
 
-  // subscribe to some state stream properties, a 'selector' of sorts
   const $hello = state$
     .pluck('hello')
     .map(val => `Hello ${val}`)
 
-  // return stream of props  
   return props$.combineLatest(hello$, (props, hello) => ({
     hello,
     handleClick
   }))   
 }
 
-// consumer component 'view'
 const Hello = ({ handleClick, message }) =>
   (
     <div>
@@ -53,8 +51,7 @@ const Hello = ({ handleClick, message }) =>
     </div>
   )
 
-// the final 'fused' or 'connected' container component
-const HelloWorld = fuse(Hello$, Hello)
+const HelloWorld = fuse(hello$)(Hello)
 
 ```
 
