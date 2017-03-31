@@ -33,7 +33,7 @@ const hello$ = (state$, dispatch, getState) => (props$) => {
     .debounceTime(300)
     .subscribe(() => dispatch(someReduxAction()))
 
-  const $hello = state$
+  const hello$ = state$
     .pluck('hello')
     .map(val => `Hello ${val}`)
 
