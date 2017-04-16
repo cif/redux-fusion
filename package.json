@@ -1,6 +1,6 @@
 {
   "name": "redux-fusion",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "RxJS Redux Bindings",
   "main": "fusion.js",
   "scripts": {
