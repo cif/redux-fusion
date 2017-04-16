@@ -43,10 +43,10 @@ const hello$ = (state$, dispatch) => (props$) => {
   }))   
 }
 
-const Hello = ({ handleClick, message }) =>
+const Hello = ({ handleClick, hello }) =>
   (
     <div>
-      <h3>{message}</h3>
+      <h3>{hello}</h3>
       <button onClick={handleClick}>Click Me</button>
     </div>
   )
