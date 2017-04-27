@@ -1,9 +1,9 @@
-import { Component, createElement } from 'react'
+import React, { createElement } from 'react'
 import { mapPropsStream } from 'recompose'
 import { Observable } from 'rxjs'
 
 export default propStream$ => (StreamedComponent) => {
-  class ComponentFromStream extends Component {
+  class ComponentFromStream extends React.Component {
     render() {
       if (!this.context.store) {
         throw new Error(
