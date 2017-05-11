@@ -7,7 +7,6 @@
     "build": "npm run peers && babel ./src -d ./ --ignore **/*.test.js",
     "mocha": "mocha ./src/*.test.js --compilers js:babel-core/register --reporter dot",
     "lint": "node_modules/eslint/bin/eslint.js src",
-    "peers": "node node_modules/npm-install-peers/dist/index.js",
     "prepublish": "npm build",
     "test": "npm run mocha && npm run lint"
   },
