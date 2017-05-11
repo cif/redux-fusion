@@ -29,9 +29,9 @@
     "redux": "^3.6.0",
     "sinon": "^2.1.0"
   },
-  "dependencies": {
-    "react": "^15.4.2",
-    "recompose": "^0.22.0",
-    "rxjs": "^5.2.0"
+  "peerDependencies": {
+    "react": "~15.4.2",
+    "recompose": "~0.22.0",
+    "rxjs": "~5.2.0"
   }
 }
