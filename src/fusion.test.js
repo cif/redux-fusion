@@ -30,26 +30,4 @@ describe('fusion', () => {
     )
     assert.equal(enz.find('div').length, 1, 'wrapper div rendered')
   })
-
-  it('should throw an error when store is not in context', () => {
-    const { mockStream } = mocks()
-    const WrappedComponent = () => <div />
-    const FusedComponent = fuse(mockStream)(WrappedComponent)
-    assert.throws(
-      () => mount(<FusedComponent />, { context: undefined }),
-      /Missing/,
-      'thrown error'
-    )
-  })
-
-  it('should throw an error when store is not observable', () => {
-    const { mockStream } = mocks()
-    const WrappedComponent = () => <div />
-    const FusedComponent = fuse(mockStream)(WrappedComponent)
-    assert.throws(
-      () => mount(<FusedComponent />, { context: { store: {} } }),
-      /observable/,
-      'throws error'
-    )
-  })
 })
