@@ -4,6 +4,13 @@ import { Observable } from 'rxjs'
 
 export default propStream$ => (StreamedComponent) => {
   class ComponentFromStream extends React.Component {
+    constructor(props, context) {
+      super(props, context);
+      const { store } = context;
+      this.WrappedComponent = mapPropsStream(
+        propStream$(Observable.from(store), store.dispatch)
+      )(StreamedComponent);
+    }
     render() {
       if (!this.context.store) {
         throw new Error(
@@ -13,9 +20,7 @@ export default propStream$ => (StreamedComponent) => {
       }
       const { store } = this.context;
       return createElement(
-        mapPropsStream(
-          propStream$(Observable.from(store), store.dispatch)
-        )(StreamedComponent)
+        this.WrappedComponent
       )
     }
   }
