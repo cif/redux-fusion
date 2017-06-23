@@ -4,19 +4,22 @@ import { Observable } from 'rxjs'
 
 export default propStream$ => (StreamedComponent) => {
   class ComponentFromStream extends React.Component {
-    render() {
-      if (!this.context.store) {
+    constructor(props, context) {
+      super(props, context);
+      const { store } = context;
+      if (!store) {
         throw new Error(
           `fuse() error: Missing Redux store in context.
            Did you forget to <Provide> it?`
         )
       }
-      const { store } = this.context;
-      return createElement(
-        mapPropsStream(
-          propStream$(Observable.from(store), store.dispatch)
-        )(StreamedComponent)
-      )
+      this.WrappedComponent = mapPropsStream(
+        propStream$(Observable.from(store), store.dispatch)
+      )(StreamedComponent)
+    }
+
+    render() {
+      return createElement(this.WrappedComponent)
     }
   }
   ComponentFromStream.contextTypes = {
