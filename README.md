@@ -1,6 +1,9 @@
 # redux-fusion
 [![Build Status](https://travis-ci.org/cif/redux-fusion.svg?branch=master)](https://travis-ci.org/cif/redux-fusion)
 
+### Update Two Years Later
+It's come to my attention this POC no longer works with current versions of React and Redux. This project unfortunately remained only simply to support the [conceputal article written on Medium](https://medium.com/@benipsen/introducing-redux-fusion-an-alternative-approach-to-react-reduxs-connect-method-for-rxjs-44248895b47d) in April 2017. Fortunately, there are now other libraries using similar concepts, namely [RefractJS](https://refract.js.org/usage/observing-redux). Happy observing!
+
 ### What is this?
 This module is a higher order component that serves as an alternative to `react-redux` [connect](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options).
 There is no additional buy in, all of your redux modules and containers can remain as-is.
